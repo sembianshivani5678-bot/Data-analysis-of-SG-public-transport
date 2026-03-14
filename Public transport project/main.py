@@ -1,22 +1,13 @@
 import requests
 import pandas as pd
+import configuration
 
-# -----------------------------
-# LTA API details
-# -----------------------------
-API_KEY = "Vr9HWuiUS0K+SAPW2LtWeA=="
-ALERTS_URL = "https://datamall2.mytransport.sg/ltaodataservice/TrainServiceAlerts"
-
-HEADERS = {
-    "AccountKey": API_KEY,
-    "accept": "application/json"
-}
 # -----------------------------
 # Function to fetch Train Alerts
 # -----------------------------
 def fetch_alerts():
     try:
-        response = requests.get(ALERTS_URL, headers=HEADERS)
+        response = requests.get(configuration.ALERTS_URL, headers=configuration.HEADERS)
         alerts = response.json()
         rows = []
         print("Processing Train Service Alerts...", alerts.get("value", []))
